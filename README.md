@@ -4,5 +4,5 @@ O projeto consiste em um sistema a ser usado por uma casa de leilões criado par
 ## Tecnologias Utilizadas
 - Java
 - Git Bash
-- Git Hub
+- GitHub
 - MySQL
