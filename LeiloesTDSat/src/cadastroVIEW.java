@@ -15,6 +15,10 @@ public class cadastroVIEW extends javax.swing.JFrame {
     public cadastroVIEW() {
         initComponents();
     }
+    
+    public void cadastrar(){
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
