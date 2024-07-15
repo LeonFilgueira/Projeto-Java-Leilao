@@ -49,7 +49,7 @@ public class ProdutosDAO {
 
     public ArrayList<ProdutosDTO> listarProdutos() {
         conn = new conectaDAO().connectDB();
-        ArrayList<ProdutosDTO> listagem = new ArrayList<>();
+        listagem = new ArrayList<>();
         String sql = "SELECT * FROM produtos";
         prep = null;
         try {
@@ -84,6 +84,30 @@ public class ProdutosDAO {
         } catch (SQLException e) {
             System.out.println("Erro:" + e);
         }
+    }
+    
+    public ArrayList<ProdutosDTO> listarProdutosVendidos(){
+        conn = new conectaDAO().connectDB();
+        listagem = new ArrayList<>();
+        String sql = "SELECT * FROM produtos WHERE status = 'Vendido'";
+        try {
+            prep = conn.prepareStatement(sql);
+            resultset = prep.executeQuery(sql);
+            
+
+            while (resultset.next()) {
+                ProdutosDTO produto = new ProdutosDTO();
+                produto.setId(resultset.getInt("id"));
+                produto.setNome(resultset.getString("nome"));
+                produto.setValor(resultset.getInt("valor"));
+                produto.setStatus(resultset.getString("status"));
+                listagem.add(produto);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro: " + ex.getMessage());
+        }
+        
+        return listagem;
     }
 
 }
