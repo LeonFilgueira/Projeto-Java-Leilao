@@ -28,9 +28,10 @@ public class ProdutosDAO {
         conn = new conectaDAO().connectDB();
         prep = null;
         try {
-            prep = conn.prepareStatement("INSERT INTO produtos(nome, valor) VALUES(?, ?)");
+            prep = conn.prepareStatement("INSERT INTO produtos(nome, valor, status) VALUES(?, ?, ?)");
             prep.setString(1, produto.getNome());
             prep.setInt(2, produto.getValor());
+            prep.setString(3, produto.getStatus());
             prep.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Erro ao conectar: " + ex.getMessage());
